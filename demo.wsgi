@@ -1,15 +1,16 @@
 from flask import Flask
 from flask import make_response
 from flask import redirect
+from flask import render_template
 application = Flask(__name__)
 
 @application.route('/')
 def hello_world():
-    return 'Hello dipper!'
+    return render_template('index.html')
 
 @application.route('/user/<name>')
 def user(name):
-    return '<h1>Hello, %s!</h1>' % name
+    return render_template('user.html', name=name)
 
 @application.route('/cookie')
 def cookiemonster():
