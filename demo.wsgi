@@ -18,6 +18,10 @@ def cookiemonster():
     response.set_cookie('answer', '42')
     return response
 
+@application.route('/charts/<name>')
+def charts(name):
+    return render_template('charts.html', name=name)
+
 @application.route('/google')
 def google():
     return redirect('https://www.google.com')
