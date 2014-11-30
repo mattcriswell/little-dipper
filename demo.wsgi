@@ -5,7 +5,8 @@ from flask import render_template
 application = Flask(__name__)
 
 months = [ 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ]
-test = "hello test"
+min_temp = [ 72, 74, 74, 69, 59, 49, 41 ]
+max_temp = [ 91, 95, 95, 90, 82, 71, 64 ]
 
 @application.route('/')
 def hello_world():
@@ -21,9 +22,9 @@ def cookiemonster():
     response.set_cookie('answer', '42')
     return response
 
-@application.route('/charts/<name>')
-def charts(name):
-    return render_template('charts.html', name=name, months=months, test=test)
+@application.route('/charts')
+def charts():
+    return render_template('charts.html', months=months, min_temp=min_temp, max_temp=max_temp)
 
 @application.route('/google')
 def google():
