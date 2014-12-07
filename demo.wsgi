@@ -2,7 +2,9 @@ from flask import Flask
 from flask import make_response
 from flask import redirect
 from flask import render_template
+from flask.ext.bootstrap import Bootstrap
 application = Flask(__name__)
+bootstrap = Bootstrap(application)
 
 months = [ 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ]
 min_temp = [ 72, 74, 74, 69, 59, 49, 41 ]
@@ -15,6 +17,10 @@ def hello_world():
 @application.route('/user/<name>')
 def user(name):
     return render_template('user.html', name=name)
+
+@application.route('/user2/<name>')
+def boots(name):
+    return render_template('boots.html', name=name)
 
 @application.route('/cookie')
 def cookiemonster():
